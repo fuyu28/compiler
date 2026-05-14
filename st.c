@@ -84,6 +84,33 @@ void do_st() {
   tok = scan();
 }
 
+void repeat_st() {
+  int blab, clab, tlab;
+
+  tlab = get_inlabel();
+  gen_code0i("L%d:", tlab);
+  blab = get_inlabel();
+  clab = get_inlabel();
+  st(blab, clab);
+  if (tok != SUNTIL)
+    error(" 'until' Expected");
+  tok = scan();
+  if (tok != SLPAREN)
+    error(" '(' Expected");
+  tok = scan();
+  gen_code0i("L%d:", clab);
+  expcode();
+  gen_code0(" TST.W R0");
+  gen_code0i(" BEQ   L%d", tlab);
+  gen_code0i("L%d:", blab);
+  if (tok != SRPAREN)
+    error(" ')' Expected");
+  tok = scan();
+  if (tok != SSEMI)
+    error(" ';' Expected");
+  tok = scan();
+}
+
 void for_st() {
   int tlab, slab, blab, clab;
 
@@ -244,6 +271,10 @@ void st(int blab, int clab) {
   case SDO:
     tok = scan();
     do_st();
+    break;
+  case SREPEAT:
+    tok = scan();
+    repeat_st();
     break;
   case SFOR:
     tok = scan();

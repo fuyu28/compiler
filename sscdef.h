@@ -74,6 +74,8 @@
 #define SSTRUCT 59
 #define SSWITCH 60
 #define SWHILE 61
+#define SREPEAT 62
+#define SUNTIL 63
 
 /* Types */
 #define TCHAR 100
@@ -149,7 +151,7 @@
 #define OCOMMA 449
 
 /* Sizes */
-#define KEY_SIZE 17
+#define KEY_SIZE 19
 #define INSTRSIZE 512
 #define PARA_TAB_SIZE 32
 /* Max num. of parameters*/

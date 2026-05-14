@@ -50,8 +50,9 @@ struct KEY {
     {"continue", SCONTINUE}, {"default", SDEFAULT}, {"do", SDO},
     {"else", SELSE},         {"extern", SEXTERN},   {"for", SFOR},
     {"goto", SGOTO},         {"if", SIF},           {"int", SINT},
-    {"return", SRETURN},     {"sizeof", SSIZEOF},   {"struct", SSTRUCT},
-    {"switch", SSWITCH},     {"while", SWHILE}};
+    {"repeat", SREPEAT},     {"return", SRETURN},   {"sizeof", SSIZEOF},
+    {"struct", SSTRUCT},     {"switch", SSWITCH},   {"until", SUNTIL},
+    {"while", SWHILE}};
 
 int which_keyword() {
   int l, r, c, i;
